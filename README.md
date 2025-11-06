@@ -1,4 +1,4 @@
-# Full Stack Vibe Coding Template
+# Full Stack Architecture for FlatFinder: Housing Revolutionized™
 
 A modern, modular full-stack application starter template with NextJS frontend and Python FastAPI backend, supabase backend for Vibe coding.
 
