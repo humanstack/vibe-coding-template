@@ -1,0 +1,29 @@
+{
+  "name": "yaml-to-production-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers backend for YAML-to-Production microservice",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "db:migrate": "wrangler d1 execute yaml-to-production-db --file=./migrations/schema.sql",
+    "db:migrate:local": "wrangler d1 execute yaml-to-production-db --local --file=./migrations/schema.sql",
+    "tail": "wrangler tail",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "hono": "^4.3.0",
+    "yaml": "^2.4.0",
+    "zod": "^3.23.0",
+    "jose": "^5.2.0",
+    "nanoid": "^5.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.57.0"
+  }
+}

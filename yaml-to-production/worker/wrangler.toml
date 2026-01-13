@@ -1,0 +1,43 @@
+name = "yaml-to-production"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "development"
+
+# D1 Database for project metadata and deployment history
+[[d1_databases]]
+binding = "DB"
+database_name = "yaml-to-production-db"
+database_id = "placeholder-database-id"
+
+# KV Namespace for session storage and caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "placeholder-kv-id"
+
+# KV Namespace for API keys (encrypted)
+[[kv_namespaces]]
+binding = "SECRETS"
+id = "placeholder-secrets-kv-id"
+
+# Durable Objects for real-time deployment progress
+[[durable_objects.bindings]]
+name = "DEPLOYMENT_SESSION"
+class_name = "DeploymentSession"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["DeploymentSession"]
+
+# R2 Bucket for project file storage
+[[r2_buckets]]
+binding = "PROJECT_FILES"
+bucket_name = "yaml-to-production-projects"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
