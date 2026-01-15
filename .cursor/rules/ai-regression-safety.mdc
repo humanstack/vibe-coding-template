@@ -1,0 +1,21 @@
+---
+description: Standards for AI Code Generation to prevent regression loops and hallucinations.
+globs: **/*
+---
+
+# AI Safety & Regression Prevention
+
+The following rules ensure that the AI Agent does not re-introduce known bugs or use deprecated patterns.
+
+## 1. Protocol
+- **Check Engram**: Before generating code, assume the user has local "Memory Cards" in Engram.
+- **Strict Mode**: If `engram_context.md` exists, follow its constraints.
+
+## 2. Anti-Hallucination (Strict)
+- **Next.js**: Do not use `layout="fill"` on `next/image` (deprecated). Use `fill` prop.
+- **Supabase**: Do not infer types for `supabase.auth.getUser()`. Always check error.
+- **Tailwind**: Do not use `text-tiny` (non-existent).
+- **Imports**: Never import from `dist` folders.
+
+## 3. Self-Correction
+- If the user undoes a generation immediately, assume the pattern was "Bad" and do not repeat it in the next turn.
