@@ -186,6 +186,8 @@ For detailed instructions on setting up authentication providers (Google, Linked
 - Check pending migrations: `make db-status`
 - Push migrations (same as apply): `make db-push`
 
+Pull requests that change the Supabase migrations run [RattleCheck](.github/workflows/rattlecheck.yml). It compares SQL permissions with the base branch and highlights new high or critical findings before you run `make db-apply`. The check reads the committed migrations without connecting to Supabase.
+
 See `supabase/README.md` for more details on database migrations.
 
 ## AI Development Support
